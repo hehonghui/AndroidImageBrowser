@@ -4,6 +4,8 @@ int anim abc_slide_in_bottom 0x7f040002
 int anim abc_slide_in_top 0x7f040003
 int anim abc_slide_out_bottom 0x7f040004
 int anim abc_slide_out_top 0x7f040005
+int anim dialog_enter_anim 0x7f040006
+int anim dialog_exit_anim 0x7f040007
 int attr actionBarDivider 0x7f010015
 int attr actionBarItemBackground 0x7f010016
 int attr actionBarPopupTheme 0x7f01000f
@@ -274,8 +276,6 @@ int dimen abc_text_size_subhead_material 0x7f070022
 int dimen abc_text_size_subtitle_material_toolbar 0x7f070013
 int dimen abc_text_size_title_material 0x7f070021
 int dimen abc_text_size_title_material_toolbar 0x7f070012
-int dimen activity_horizontal_margin 0x7f07002b
-int dimen activity_vertical_margin 0x7f07002c
 int dimen dialog_fixed_height_major 0x7f07000e
 int dimen dialog_fixed_height_minor 0x7f07000f
 int dimen dialog_fixed_width_major 0x7f07000c
@@ -333,7 +333,7 @@ int drawable abc_textfield_default_mtrl_alpha 0x7f02002f
 int drawable abc_textfield_search_activated_mtrl_alpha 0x7f020030
 int drawable abc_textfield_search_default_mtrl_alpha 0x7f020031
 int drawable abc_textfield_search_material 0x7f020032
-int drawable ic_launcher 0x7f020033
+int drawable imagebrowser_save_btn_bg 0x7f020033
 int id action_bar 0x7f090031
 int id action_bar_activity_content 0x7f090003
 int id action_bar_container 0x7f090030
@@ -347,7 +347,6 @@ int id action_menu_presenter 0x7f090006
 int id action_mode_bar 0x7f09002e
 int id action_mode_bar_stub 0x7f09002d
 int id action_mode_close_button 0x7f090020
-int id action_settings 0x7f090042
 int id activity_chooser_view_content 0x7f090021
 int id always 0x7f090014
 int id beginning 0x7f09001b
@@ -367,17 +366,20 @@ int id homeAsUp 0x7f09000e
 int id icon 0x7f090026
 int id ifRoom 0x7f090016
 int id image 0x7f090023
-int id imageView 0x7f090040
+int id imageView 0x7f09003f
+int id image_viewpager 0x7f090042
+int id indicator_tv 0x7f090041
 int id listMode 0x7f09000a
 int id list_item 0x7f090025
 int id middle 0x7f09001d
 int id never 0x7f090017
 int id none 0x7f09000f
 int id normal 0x7f09000b
-int id progressBar 0x7f090041
+int id progressBar 0x7f090040
 int id progress_circular 0x7f090007
 int id progress_horizontal 0x7f090008
 int id radio 0x7f09002b
+int id save_tv 0x7f090043
 int id search_badge 0x7f090035
 int id search_bar 0x7f090034
 int id search_button 0x7f090036
@@ -398,7 +400,6 @@ int id tabMode 0x7f09000c
 int id title 0x7f090027
 int id up 0x7f090001
 int id useLogo 0x7f090013
-int id viewpager 0x7f09003f
 int id withText 0x7f090018
 int id wrap_content 0x7f090009
 int integer abc_max_action_buttons 0x7f080000
@@ -425,10 +426,9 @@ int layout abc_screen_toolbar 0x7f030013
 int layout abc_search_dropdown_item_icons_2line 0x7f030014
 int layout abc_search_view 0x7f030015
 int layout abc_simple_dropdown_hint 0x7f030016
-int layout activity_main 0x7f030017
-int layout image_item 0x7f030018
+int layout image_item 0x7f030017
+int layout imagebrowser_layout 0x7f030018
 int layout support_simple_spinner_dropdown_item 0x7f030019
-int menu main 0x7f0c0000
 int string abc_action_bar_home_description 0x7f0a0001
 int string abc_action_bar_home_description_format 0x7f0a0005
 int string abc_action_bar_home_subtitle_description_format 0x7f0a0006
@@ -445,11 +445,8 @@ int string abc_searchview_description_voice 0x7f0a000b
 int string abc_shareactionprovider_share_with 0x7f0a000f
 int string abc_shareactionprovider_share_with_application 0x7f0a000e
 int string abc_toolbar_collapse_description 0x7f0a0004
-int string action_settings 0x7f0a0012
-int string app_name 0x7f0a0010
-int string hello_world 0x7f0a0011
-int style AppBaseTheme 0x7f0b00eb
-int style AppTheme 0x7f0b00ec
+int string save 0x7f0a0010
+int string saved 0x7f0a0011
 int style Base_TextAppearance_AppCompat 0x7f0b0098
 int style Base_TextAppearance_AppCompat_Body1 0x7f0b00a3
 int style Base_TextAppearance_AppCompat_Body2 0x7f0b00a2
@@ -559,6 +556,7 @@ int style Base_Widget_AppCompat_Spinner 0x7f0b0077
 int style Base_Widget_AppCompat_Spinner_DropDown_ActionBar 0x7f0b0078
 int style Base_Widget_AppCompat_Toolbar 0x7f0b008f
 int style Base_Widget_AppCompat_Toolbar_Button_Navigation 0x7f0b0090
+int style BrowserDialogAnimation 0x7f0b00ec
 int style Platform_AppCompat 0x7f0b00c9
 int style Platform_AppCompat_Dialog 0x7f0b00cb
 int style Platform_AppCompat_Light 0x7f0b00ca
@@ -685,6 +683,7 @@ int style Widget_AppCompat_Spinner_DropDown 0x7f0b001b
 int style Widget_AppCompat_Spinner_DropDown_ActionBar 0x7f0b001c
 int style Widget_AppCompat_Toolbar 0x7f0b0034
 int style Widget_AppCompat_Toolbar_Button_Navigation 0x7f0b0035
+int style imagebrowser_dialog_style 0x7f0b00eb
 int[] styleable ActionBar { 0x7f010000, 0x7f010001, 0x7f01002c, 0x7f010055, 0x7f010056, 0x7f010057, 0x7f010058, 0x7f010059, 0x7f01005a, 0x7f01005b, 0x7f01005c, 0x7f01005d, 0x7f01005e, 0x7f01005f, 0x7f010060, 0x7f010061, 0x7f010062, 0x7f010063, 0x7f010064, 0x7f010065, 0x7f010066, 0x7f010067, 0x7f010068, 0x7f010069, 0x7f01006a, 0x7f01006b, 0x7f01006c }
 int styleable ActionBar_background 11
 int styleable ActionBar_backgroundSplit 13

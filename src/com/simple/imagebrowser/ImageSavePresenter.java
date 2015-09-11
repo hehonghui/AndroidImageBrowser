@@ -40,28 +40,35 @@ class ImageSavePresenter {
 	 * @param url
 	 * @param bitmap
 	 */
-	public void saveImage(String url, Bitmap bitmap) {
+	public void saveImage(final String url, final Bitmap bitmap) {
 		if (TextUtils.isEmpty(url) || bitmap == null) {
 			return;
 		}
 
-		FileOutputStream fileOutputStream = null;
-		try {
-			String fileName = MD5.toMD5(url);
-			File imgFile = new File(mCachePath + File.separator + fileName
-					+ ".png");
-			fileOutputStream = new FileOutputStream(imgFile);
-			bitmap.compress(CompressFormat.PNG, 100, fileOutputStream);
-			fileOutputStream.flush();
-			// 更新媒体库
-			updateMediaStore(imgFile);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			closeSilently(fileOutputStream);
-		}
+		new Thread() {
+
+			public void run() {
+				FileOutputStream fileOutputStream = null;
+				try {
+					String fileName = MD5.toMD5(url);
+					File imgFile = new File(mCachePath + File.separator
+							+ fileName + ".png");
+					fileOutputStream = new FileOutputStream(imgFile);
+					bitmap.compress(CompressFormat.PNG, 100, fileOutputStream);
+					fileOutputStream.flush();
+					// 更新媒体库
+					updateMediaStore(imgFile);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally {
+					closeSilently(fileOutputStream);
+				}
+			};
+
+		}.start();
+
 	}
 
 	private String getCacheDir() {

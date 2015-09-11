@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.co.senab.photoview.PhotoView;
-import uk.co.senab.photoview.PhotoViewAttacher;
 import uk.co.senab.photoview.PhotoViewAttacher.OnViewTapListener;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -82,7 +81,7 @@ public abstract class ImageAdapter extends PagerAdapter {
 	public final Object instantiateItem(ViewGroup container, int position) {
 		ImageViewHolder viewHolder = createItemView(container, position);
 		// 设置点按事件
-		viewHolder.imageViewAttacher.setOnViewTapListener(mOnViewTapListener);
+		viewHolder.photoView.setOnViewTapListener(mOnViewTapListener);
 		// 加载图片
 		displayImage(viewHolder, position, getItem(position));
 		// 将该视图添加到ViewGroup中
@@ -140,10 +139,6 @@ public abstract class ImageAdapter extends PagerAdapter {
 		 * 显示加载进度的Progressbar
 		 */
 		public ProgressBar progressBar;
-		/**
-		 * 用于缩放图片的PhotoViewAttacher
-		 */
-		public PhotoViewAttacher imageViewAttacher;
 
 		/**
 		 * @param itemView
@@ -152,8 +147,6 @@ public abstract class ImageAdapter extends PagerAdapter {
 			this.itemView = itemView;
 			photoView = (PhotoView) itemView.findViewById(R.id.imageView);
 			progressBar = (ProgressBar) itemView.findViewById(R.id.progressBar);
-			imageViewAttacher = new PhotoViewAttacher(photoView);
-			imageViewAttacher.setScaleType(photoView.getScaleType());
 		}
 
 	}

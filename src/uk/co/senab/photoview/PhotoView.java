@@ -34,8 +34,6 @@ public class PhotoView extends ImageView implements IPhotoView {
 
 	private ScaleType mPendingScaleType;
 
-	private Bitmap mBitmap;
-
 	public PhotoView(Context context) {
 		this(context, null);
 	}
@@ -183,6 +181,16 @@ public class PhotoView extends ImageView implements IPhotoView {
 			mAttacher.update();
 		}
 	}
+	
+	
+	@Override
+	public void setImageBitmap(Bitmap bm) {
+		super.setImageBitmap(bm);
+		if (null != mAttacher) {
+			mAttacher.update();
+		}
+	}
+	
 
 	@Override
 	public void setImageResource(int resId) {
